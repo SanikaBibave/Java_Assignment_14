@@ -1,0 +1,150 @@
+ PART A – THEORY QUESTIONS
+1) How does HashMap work internally?
+* HashMap stores data in key-value pairs.
+* It uses a hashing technique to store data.
+* When we put a key, Java calls the hashCode() method of the key.
+* The hashCode is converted into an index of an internal array (called bucket).
+* The value is stored at that index.
+* If two keys have the same index, a collision occurs.
+* In case of collision, elements are stored using a LinkedList (or balanced tree in Java 8+).
+* When we call get(), it again checks hashCode and finds the correct bucket.
+* Then it uses equals() method to find the exact key.
+* HashMap is not synchronized and allows one null key.
+2) What is Load Factor in HashMap?
+* Load factor defines how full the HashMap can be before resizing.
+* Default load factor is 0.75 (75%).
+* When the map becomes 75% full, it increases its size.
+* This process is called rehashing.
+* A high load factor saves memory but reduces performance.
+* A low load factor increases performance but uses more memory.
+* Formula:
+   Capacity × Load Factor
+* When size exceeds this value ? resizing happens.
+* Default initial capacity is 16.
+* Load factor helps maintain good performance.
+3) What are Generics in Java?
+* Generics allow us to create classes, interfaces, and methods with type parameters.
+* They provide type safety.
+* They work at compile time.
+* Example: ArrayList<String>
+* Generics reduce type casting.
+* They improve code reusability.
+* Syntax uses <T> symbol.
+* T stands for Type.
+* We can create generic methods.
+* Generics were introduced in Java 5.
+4) Why are Generics used?
+* To ensure type safety.
+* To avoid ClassCastException at runtime.
+* To reduce explicit type casting.
+* To improve readability.
+* To increase code reusability.
+* To catch errors at compile time.
+* Used mainly in Collections Framework.
+* Makes code more flexible.
+* Allows parameterized types.
+* Improves overall program reliability.
+5) What is Type Safety?
+* Type safety means storing only same type of data in a collection.
+* It prevents wrong type insertion.
+* Errors are detected at compile time.
+* Achieved using Generics.
+* Example: ArrayList<Integer>
+* You cannot add a String in it.
+* It prevents runtime exceptions.
+* It makes code secure.
+* It avoids manual casting.
+* It improves code quality.
+PART B – PROGRAMMING QUESTIONS
+1) Iterate HashSet using for-each loop
+import java.util.HashSet;
+
+public class HashSetForEach {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+
+        set.add("Java");
+        set.add("Python");
+        set.add("C++");
+
+        for (String s : set) {
+            System.out.println(s);
+        }
+    }
+}
+2) Convert HashSet to ArrayList
+import java.util.*;
+
+public class ConvertSetToList {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Mango");
+
+        ArrayList<String> list = new ArrayList<>(set);
+
+        System.out.println("ArrayList: " + list);
+    }
+}
+3) Find Union and Intersection using Set
+import java.util.*;
+
+public class UnionIntersection {
+    public static void main(String[] args) {
+
+        HashSet<Integer> set1 = new HashSet<>();
+        set1.add(1);
+        set1.add(2);
+        set1.add(3);
+
+        HashSet<Integer> set2 = new HashSet<>();
+        set2.add(2);
+        set2.add(3);
+        set2.add(4);
+
+        HashSet<Integer> union = new HashSet<>(set1);
+        union.addAll(set2);
+        HashSet<Integer> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2);
+
+        System.out.println("Union: " + union);
+        System.out.println("Intersection: " + intersection);
+    }
+}
+4) Check if HashSet contains an element
+import java.util.HashSet;
+
+public class CheckElement {
+    public static void main(String[] args) {
+
+        HashSet<String> set = new HashSet<>();
+        set.add("Java");
+        set.add("SQL");
+
+        if (set.contains("Java")) {
+            System.out.println("Element found");
+        } else {
+            System.out.println("Element not found");
+        }
+    }
+}
+5) Create and Iterate a HashMap
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> map = new HashMap<>();
+
+        map.put(1, "Sanika");
+        map.put(2, "Rahul");
+        map.put(3, "Amit");
+
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
+}
